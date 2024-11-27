@@ -23,6 +23,8 @@
 @endsection
 
 @section('content')
+
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -39,7 +41,7 @@
         </div>
     </div>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -56,7 +58,12 @@
                                 <div class="col-md-4">
                                     <div>
                                         <label for="name" class="form-label">Tên sản phẩm</label>
-                                        <input type="text" class="form-control" name="name" id="name">
+                                        @error('name')
+                                            <div class="text-danger">{{ $message }} </div>
+                                        @enderror
+                                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+
+
                                     </div>
                                     <div class="mt-3">
                                         <label for="sku" class="form-label">Mã sản phẩm</label>
@@ -66,24 +73,33 @@
                                     <div class="mt-3">
                                         <label for="price_regular" class="form-label">Giá sản phẩm</label>
                                         <input type="number" value="0" class="form-control" name="price_regular"
-                                            id="price_regular">
+                                            id="price_regular" value="{{ old('price_regular') }}">
+                                        @error('price_regular')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mt-3">
                                         <label for="price_sale" class="form-label">Giá khuyến mãi</label>
                                         <input type="number" value="0" class="form-control" name="price_sale"
-                                            id="price_sale">
+                                            id="price_sale" value="{{ old('price_sale') }}">
                                     </div>
                                     <div class="mt-3">
                                         <label for="category_id" class="form-label">Danh mục</label>
                                         <select type="text" class="form-select" name="category_id" id="category_id">
                                             @foreach ($categories as $id => $name)
-                                            <option value="{{ $id }}">{{ $name }}</option>
-                                        @endforeach
+                                                <option value="{{ $id }}">{{ $name }}</option>
+                                            @endforeach
                                         </select>
+                                        @error('category_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mt-3">
                                         <label for="img_thumbnail" class="form-label">Ảnh sản phẩm</label>
                                         <input type="file" class="form-control" name="img_thumbnail" id="img_thumbnail">
+                                        @error('img_thumbnail')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -114,15 +130,15 @@
                                     <div class="row">
                                         <div class="mt-3">
                                             <label for="description" class="form-label">Mô tả</label>
-                                            <textarea class="form-control textarea-scroll" name="description" id="description" rows="2"></textarea>
+                                            <textarea class="form-control textarea-scroll" name="description" id="description" rows="2">{{ old('description') }}</textarea>
                                         </div>
                                         <div class="mt-3">
                                             <label for="material" class="form-label">Chất liệu</label>
-                                            <textarea class="form-control textarea-scroll" name="material" id="material" rows="2"></textarea>
+                                            <textarea class="form-control textarea-scroll" name="material" id="material" rows="2">{{ old('material') }}</textarea>
                                         </div>
                                         <div class="mt-3">
                                             <label for="content" class="form-label">Nội dung</label>
-                                            <textarea class="form-control" name="content" id="content"></textarea>
+                                            <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -146,29 +162,65 @@
                         <h6 class="card-title mb-0 flex-grow-1">Biến thể</h6>
                     </div>
 
-                    <div class="card-body">
-                        <div class="live-preview">
-                            <div class="row gy-4">
+                    <div class="card-body ">
+                        <div class="live-preview row">
+                            <div class="col col-6 gy-4">
 
                                 <h6 class="fw-semibold">Chọn màu </h6>
-                                <select class="js-example-basic-multiple form-select form-select-sm" name="states[]"
-                                    multiple="multiple">
-                                  @foreach ($colors as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
-                                 
-                                  @endforeach
+                                <select class="js-example-basic-multiple form-select form-select-sm"
+                                    name="product_color[]" multiple="multiple" id="select_color">
+                                    @foreach ($colors as $id => $name)
+                                        <option value="{{ $id }}">{{ $name }}</option>
+                                    @endforeach
                                 </select>
-
+                                @error('product_color')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <div id="sizeInputs" class="row">
-                                <!-- Các ô nhập size vaf ảnh sẽ được thêm vào đây -->
+                            <div class="col col-6 gy-4">
 
-
+                                <h6 class="fw-semibold">Chọn size </h6>
+                                <select class="js-example-basic-multiple form-select form-select-sm" name="product_size[]"
+                                    multiple="multiple" id="select_size">
+                                    @foreach ($sizes as $id => $name)
+                                        <option value="{{ $id }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('product_size')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>
                     </div>
+
+
+                </div>
+
+                <div class="card" id="table_product_variant_preview">
+                    <div class="card-header align-items-center d-flex">
+                        <h6 class="card-title mb-0 flex-grow-1">Table Variants</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Tables Border Colors -->
+                        <table class="table table-bordered  table-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Màu sắc</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Ảnh</th>
+                                </tr>
+                            </thead>
+                            <tbody id="render_tbody_product_variant">
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
 
@@ -212,7 +264,8 @@
                                 <div class="col-md-12">
                                     <div>
                                         <label for="tags" class="form-label">Tags</label>
-                                        <select class="form-select" multiple aria-label="multiple select example">
+                                        <select class="form-select" name="tags[]" multiple
+                                            aria-label="multiple select example">
                                             @foreach ($tags as $id => $name)
                                                 <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
@@ -239,6 +292,8 @@
             <!--end col-->
         </div>
 
+
+
     </form>
 @endsection
 
@@ -262,135 +317,56 @@
                 console.error(error);
             });
 
-        $(document).ready(function() {
-            // Đối tượng để lưu trữ lựa chọn size và số lượng cho từng màu
-            let selectedSizes = {};
-            let quantityData = {}; // Lưu trữ số lượng đã nhập cho từng màu và size
+        function renderTableVariants(colors, sizes) {
+            let tableRows = '';
 
-            // Hàm tạo ô nhập kích cỡ và số lượng cho từng màu
-            function createSizeInput(color,name) {
-                return `
-                    <div class="mt-2 size-input" data-color="${color}">
-                        <div class="d-flex">
-                            <div class="me-3">
-                                <label for="size_${color}" class="form-label">Size màu ${name}</label>
-                                <select class="size-select form-select form-select-sm" name="size_${color}[]" multiple="multiple" style="width: 120px; white-space: nowrap;">
-                                    @foreach ($sizes as $id => $name)
-                                        <option value="{{ $id }}">{{ $name }}</option>
-                                    @endforeach
-                                </select>
+            colors.forEach((color, colorIndex) => {
+                sizes.forEach((size, sizeIndex) => {
+                    tableRows += ` 
+                        <tr>   
+                                    ${sizeIndex === 0 ?  ` <td rowspan="${sizes.length}" style="vertical-align: middle;"> ${color.text}  </td>` :''}
                                 
-                            </div>
-
-                            <div>
-                                <label for="formFile" class="form-label">Image</label>
-                                <input class="form-control" type="file" id="formFile" style="width: 240px;">
-                            </div>
-                        </div>
-                        
-                        <div class="quantity-inputs" style="display: flex; gap: 10px; align-items: center;">
-                            <!-- Các ô nhập số lượng sẽ được thêm vào đây -->
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Khởi tạo Select2 cho phần chọn màu
-            $('.js-example-basic-multiple').on('change', function() {
-                const selectedColors = $(this).val();
-                $('#sizeInputs').empty(); // Xóa các ô nhập kích cỡ trước đó
-
-                  // Lấy tên của tất cả các tùy chọn đã chọn
-                const selectedColorNames = [];
-                $(this).find('option:selected').each(function() {
-                    selectedColorNames.push($(this).text()); // Thêm tên màu vào mảng selectedColorNames
-                });
-
-            
-                
-
-                // Thêm ô nhập kích cỡ cho mỗi màu đã chọn và giữ lại lựa chọn cũ nếu có
-                selectedColors.forEach((color, index) => {
-
-                    const name = selectedColorNames[index];
-                    const sizeInputHTML = createSizeInput(color, name);
-                    $('#sizeInputs').append(sizeInputHTML);
-
-                    // Giữ lại các lựa chọn size đã chọn trước đó
-                    if (selectedSizes[color]) {
-                        const sizeSelect = $('#sizeInputs').find(`[data-color="${color}"]`).find('.size-select');
-                        sizeSelect.val(selectedSizes[color]).trigger('change'); // Cập nhật lại giá trị cho size select
-                    }
-
-                    // Giữ lại số lượng đã nhập cho màu này
-                    const quantityContainer = $('#sizeInputs').find(`[data-color="${color}"]`).find('.quantity-inputs');
-                    const savedQuantities = quantityData[color];
-
-                    if (savedQuantities) {
-                        Object.keys(savedQuantities).forEach(size => {
-                            const quantityValue = savedQuantities[size];
-                            const quantityInput = `
-                                <div>
-                                    <label for="quantity_${size}" class="form-label">Số lượng ${size}</label>
-                                    <input type="number" class="form-control form-control-sm" name="quantity_${size}" value="${quantityValue}" min="1" style="width: 80px;">
-                                </div>
-                            `;
-                            quantityContainer.append(quantityInput);
-                        });
-                    }
-                });
-
-                // Khởi tạo lại Select2 cho phần chọn size
-                $('.size-select').select2();
-
-                // Thêm sự kiện khi chọn size để hiển thị ô nhập số lượng
-                $('.size-select').on('change', function() {
-                    const selectedSizesForThisColor = $(this).val();
-                    const color = $(this).closest('.size-input').data('color');
-
-                    const selectedSizeNames = [];
-                    $(this).find('option:selected').each(function() {
-                        selectedSizeNames.push($(this).text()); // Thêm tên màu vào mảng selectedColorNames
-                    });
-
-                    // Lưu lại các size đã chọn cho màu này
-                    selectedSizes[color] = selectedSizesForThisColor;
-
-                    const quantityContainer = $(this).closest('.size-input').find('.quantity-inputs');
-                    quantityContainer.empty();
-
-                    // Với mỗi size đã chọn, thêm một ô nhập số lượng
-                    selectedSizesForThisColor.forEach((size, index) => {
-
-                        const sizeName = selectedSizeNames[index];
-
-
-                        // Kiểm tra xem đã có dữ liệu số lượng cho size này chưa
-                        const quantityValue = quantityData[color] && quantityData[color][size] ? quantityData[color][size] : '';
-                        const quantityInput = `
-                            <div>
-                                <label for="quantity_${size}" class="form-label">Số lượng size:  ${sizeName}</label>
-                                <input type="number" class="form-control form-control-sm" name="quantity_${size}" value="${quantityValue}" min="1" style="width: 120px;">
-                            </div>
-                        `;
-                        quantityContainer.append(quantityInput);
-                    });
-                });
-
-                // Sự kiện khi thay đổi số lượng
-                $(document).on('input', '.quantity-inputs input[type="number"]', function() {
-                    const color = $(this).closest('.size-input').data('color');
-                    const size = $(this).attr('name').split('_')[
-                        1]; // Lấy size từ tên trường (quantity_S, quantity_M, ...)
-                    const quantity = $(this).val();
-
-                    // Lưu lại số lượng đã nhập cho màu và size tương ứng
-                    if (!quantityData[color]) {
-                        quantityData[color] = {};
-                    }
-                    quantityData[color][size] = quantity;
-                });
+                                <td> ${size.text}  </td>
+                                <td> 
+                                    <input type="number" class="form-control product-quantity" name="product_variants[${color.id}-${size.id}][quantity]">  
+                                </td>
+                                <td>
+                                    <input type="file" class="form-control" name="product_variants[${color.id}-${size.id}][image]">
+                                </td>
+                              
+                        </tr>
+                    `
+                })
             });
+
+            return tableRows;
+        }
+
+
+        $(document).ready(function() {
+
+
+            $('#table_product_variant_preview').hide();
+            $('#select_color, #select_size').on('change', () => {
+                const selectColor = $('#select_color').select2('data');
+                const selectSize = $('#select_size').select2('data');
+
+                if (selectColor.length > 0 && selectSize.length > 0) {
+                    $('#table_product_variant_preview').show();
+                    const renderTbody = renderTableVariants(selectColor, selectSize);
+                    $('#render_tbody_product_variant').html(renderTbody);
+                } else {
+                    $('#table_product_variant_preview').hide();
+                    $('#render_tbody_product_variant').empty();
+
+                }
+
+
+            });
+
+
+
+
         });
 
         function addImgGallary() {

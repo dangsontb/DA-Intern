@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_tags', function (Blueprint $table) {
+        Schema::create('product_tag', function (Blueprint $table) {
 
             $table->foreignIdFor(Product::class)->constrained();
             $table->foreignIdFor(Tag::class)->constrained();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_tags');
+        Schema::dropIfExists('product_tag');
     }
 };
