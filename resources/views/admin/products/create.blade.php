@@ -23,8 +23,6 @@
 @endsection
 
 @section('content')
-
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -58,12 +56,13 @@
                                 <div class="col-md-4">
                                     <div>
                                         <label for="name" class="form-label">Tên sản phẩm</label>
+
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            value="{{ old('name')  }}">
+
                                         @error('name')
                                             <div class="text-danger">{{ $message }} </div>
                                         @enderror
-                                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
-
-
                                     </div>
                                     <div class="mt-3">
                                         <label for="sku" class="form-label">Mã sản phẩm</label>

@@ -22,9 +22,10 @@ class StoreProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('product') ?: null;
         return [
             'name'          => 'required|string|max:255',
-            'sku'           =>  ['required', 'max:255', Rule::unique('products')],
+            'sku'           =>  ['required', 'max:255', Rule::unique('products')->ignore($id)],
             'img_thumbnail' => 'nullable|image|max:2048',
             'price_regular' => ['required', 'numeric', 'min:0', 'regex:/^\d{1,8}(\.\d{1,2})?$/'],
             'price_sale'    => ['nullable', 'numeric', 'min:0', 'lte:price_regular', 'regex:/^\d{1,8}(\.\d{1,2})?$/'],

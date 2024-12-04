@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <style>
+        .text-truncate-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .shoes:focus {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body ng-app="asmApp">
+    <div class="container">
+        <header>
+            <!-- MENU -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex me-5" href="#">
+                        <img src="./images/logo.png" alt="logo" width="100"
+                            class="rounded d-inline-block align-text-top">
+                    </a>
+
+                    <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="#">Trang chủ</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Nam
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Giày</a></li>
+                                    <li><a class="dropdown-item" href="#">Dép</a></li>
+
+                                    <li><a class="dropdown-item" href="#">Balo</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Nữ
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Giày</a></li>
+                                    <li><a class="dropdown-item" href="#">Dép</a></li>
+
+                                    <li><a class="dropdown-item" href="#">Balo</a></li>
+                                    <li><a class="dropdown-item" href="#">Túi xách</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Khuyến mãi </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Liên hệ </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Giới thiệu </a>
+                            </li>
+
+                        </ul>
+                        <form class="d-flex me-5" role="search">
+                            <input class="form-control  form-control-sm me-2 " type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
+                        </form>
+
+
+                    </div>
+                    <div class="d-flex">
+                        <ul class=" navbar-nav">
+                            <li class="nav-item dropdown" style="list-style: none; ">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fas fa-user fa-lg" style="color: black;"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="width: 50px;">
+                                    <li><a class="dropdown-item" href="#!login">Đăng nhập</a></li>
+                                    <li><a class="dropdown-item" href="#!register">Đăng kí</a></li>
+                                    <li><a class="dropdown-item" href="./order.html">Đơn hàng</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item position-relative">
+                                <a class="nav-link" href="./cart-item.html">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <span
+                                        class="position-absolute  start-100 translate-middle badge rounded-circle bg-dark">
+                                        1
+                                    </span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
+
+            <!-- Banner -->
+            <div id="carouselExampleIndicators" class=" carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./public/images/banner1.jpg" class="d-block w-100" height="500px" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./public/images/banner2.jpg" class="d-block w-100" height="500px" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./public/images/banner3.jpg" class="d-block w-100" height="500px" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </header>
+
+
+
+        <main class="row mt-3" ng-view>
+
+            <div class="text-center my-5 row">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <i class="fas fa-rocket fa-rotate-270 fa-lg logo" style="color: #E40001;"></i>
+                        <h4>Giao hàng nhanh 1-2 ngày</h4>
+                        <span>Miễn Ship khi chuyển khoản trước</span>
+                    </div>
+                    <div class="col">
+                        <i class="fas fa-medal fa-lg logo" style="color: #E40001;"></i>
+                        <h4>Cam kết chất lượng</h4>
+                        <span>Hàng chính hãng 100%</span>
+                    </div>
+                    <div class="col">
+                        <i class="fas fa-handshake fa-lg logo" style="color: #E40001;"></i>
+                        <h4>Hỗ trợ mua hàng</h4>
+                        <span>Tư vấn tận tình, hỗ trợ đổi hàng</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <article>
+
+                <nav class="mt-5 d-flex justify-content-center">
+                    <div class="nav " id="nav-tab" role="tablist">
+                        <button class="nav-link active text-dark fw-bold    shoes" id="nav-home-tab"
+                            data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab"
+                            aria-controls="nav-home" aria-selected="true">Giày Nam</button>
+                        <button class="nav-link  text-dark fw-bold   shoes" id="nav-profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                            aria-selected="false">Giày Nữ</button>
+
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                        tabindex="0">
+                        <div class="row m-5 ">
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 2.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/anh6.jpg" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/anh7.jpg" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/anh2.jpg" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/anh8.jpg" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/anh9.jpg" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 2.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                        tabindex="0">
+                        <div class="row m-5 ">
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card mb-4 border-0 bg-light" style="height: 320px;">
+                                    <a href="./detail-item.html">
+                                        <img src="./images/giày 3.png" height="180px" class="card-img-top"
+                                            alt="Product Image 1">
+                                    </a>
+                                    <div class="card-body">
+                                        <a href="./detail-item.html" class="text-decoration-none text-dark">
+                                            <h6 class="card-title text-truncate-2">Giày tập thể thao nam Basic Walking
+                                                ANTA
+                                                1124A7790-1</h6>
+                                        </a>
+                                        <div class="card-text text-danger fw-semibold">1,150,000đ</div>
+                                        <div class="card-text ">
+                                            <del class="text-decoration-line-through  opacity-25">1,299,000đ</del>
+                                            <span class="badge text-bg-danger rounded-circle mx-2 ">20%</span>
+                                        </div>
+
+                                        <button type="submit" name="addtocart"
+                                            style="background-color: white; border:none"><i
+                                                class="fas fa-cart-plus fa-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </article>
+
+            <div class="mb-5 d-flex justify-content-center">
+                <a href="./list-item.html" class="btn btn-outline-dark">Xem tất cả <i
+                        class="fa-solid fa-chevron-right "></i></a>
+            </div>
+
+        </main>
+
+        <footer class="bg-dark">
+            <div class="container text-light">
+                <div class="row d-flex  justify-content-center p-5 ">
+                    <div class="col px-5">
+                        <h4 class="mb-3">Hỗ Trợ Khách Hàng</h4>
+                        <div class="mt-3">Email: sondvph45612@fpt.edu.vn</div>
+                        <div class="mt-3"> Hotline: 0339530282</div>
+                        <div class="mt-3">Địa chỉ: Cổng số 1, Tòa nhà FPT Polytechnic, <br>
+                            13 phố Trịnh Văn Bô, phường Phương Canh,<br> quận Nam Từ Liêm, TP Hà Nội</div>
+                    </div>
+                    <div class="col px-5">
+                        <h4 class="mb-3">Hướng Dẫn</h4>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Hướng dẫn
+                                mua hàng</a></li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Phương thức
+                                thanh toán</a></li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Chính Sách
+                                Vận Chuyển</a></li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Chính sách
+                                đổi trả</a></li>
+                    </div>
+                    <div class="col">
+                        <h4 class="mb-3">Tài khoản của bạn</h4>
+
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Cập nhật tài
+                                khoản</a></li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Giỏ hàng</a>
+                        </li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Lịch sử giao
+                                dịch</a></li>
+                        <li class="list-group-item mt-1"><a href="" class="text-decoration-none text-light">Kiểm tra đơn
+                                hàng</a></li>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
+
+
+    <!-- <script src="js/route.js"></script> -->
+</body>
+
+</html>

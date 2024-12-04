@@ -1,0 +1,6 @@
+  /* Custom CSS to enable dropdown on hover */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Fixes the margin so it aligns correctly */
+  }
+  
